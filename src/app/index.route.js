@@ -5,7 +5,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'app/main/main.html',
       controller: 'MainController',
-      controllerAs: 'main'
+      controllerAs: 'main' // use main to access functions through controller
     });
 
   $urlRouterProvider.otherwise('/');

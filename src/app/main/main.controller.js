@@ -1,32 +1,14 @@
 export class MainController {
-  constructor ($timeout, webDevTec, toastr) {
+  constructor ($http) {
     'ngInject';
 
-    this.awesomeThings = [];
-    this.classAnimation = '';
-    this.creationDate = 1482379282028;
-    this.toastr = toastr;
-
-    this.activate($timeout, webDevTec);
+      this.http = $http;
   }
 
-  activate($timeout, webDevTec) {
-    this.getWebDevTec(webDevTec);
-    $timeout(() => {
-      this.classAnimation = 'rubberBand';
-    }, 4000);
-  }
+  postMessage() {
+    //  angular post method referenced in the constructor function above
+    // when the function is excuted by the form click, the message is passed along to the server side post
+    this.http.post('http://localhost:5000/api/message', {msg: this.message});
+  }  
 
-  getWebDevTec(webDevTec) {
-    this.awesomeThings = webDevTec.getTec();
-
-    angular.forEach(this.awesomeThings, (awesomeThing) => {
-      awesomeThing.rank = Math.random();
-    });
-  }
-
-  showToastr() {
-    this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-    this.classAnimation = '';
-  }
 }
