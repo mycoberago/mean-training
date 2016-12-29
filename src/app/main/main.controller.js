@@ -3,6 +3,17 @@ export class MainController {
     'ngInject';
 
       this.http = $http;
+      this.getMessages();
+  }
+
+  //  this grabs the messages from the api
+  //  this can be used then to parse and display data onto the web page
+  getMessages(){
+  	//  vm is for view model
+  	var vm = this;
+  	this.http.get('http://localhost:5000/api/message').then(function(result){
+  		vm.messages = result.data;
+  	});
   }
 
   postMessage() {
